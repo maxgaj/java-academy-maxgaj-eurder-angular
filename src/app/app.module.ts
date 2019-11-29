@@ -5,6 +5,7 @@ import {CoreModule} from './core/core.module';
 import {ItemModule} from './item/item.module';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {SharedModule} from './shared/shared.module';
 
 const routes = [
   {path: '', redirectTo: '/item', pathMatch: 'full'}
@@ -16,6 +17,7 @@ const routes = [
   ],
   imports: [
     CoreModule,
+    SharedModule,
     ItemModule,
     CommonModule,
     RouterModule.forRoot(routes)
