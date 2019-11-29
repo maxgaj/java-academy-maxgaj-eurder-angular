@@ -1,5 +1,12 @@
 @import '~@angular/material/theming';
 
+.page-title {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .item-card-wrapper{
   display:flex;
   flex-direction: row;

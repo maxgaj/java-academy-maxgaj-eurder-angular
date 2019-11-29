@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CoreModule} from '../core/core.module';
-import {MatButtonModule, MatCardModule, MatDividerModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
@@ -12,6 +12,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
     FontAwesomeModule
   ],
   exports: [
@@ -19,6 +21,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
     FontAwesomeModule
   ],
 })

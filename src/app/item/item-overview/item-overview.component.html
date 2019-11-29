@@ -1,7 +1,16 @@
-<h2 class="mat-h2">Items</h2>
+<div class="page-title">
+  <h2 class="mat-h2 accent">Items</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by name</mat-label>
+    <input matInput type="text" [formControl]="filteringInput" id="item-filter-input">
+    <fa-icon [icon]="faSearch" matSuffix class="primary"></fa-icon>
+  </mat-form-field>
+</div>
+
 <mat-divider></mat-divider>
+
 <div class="item-card-wrapper">
-  <mat-card class="item-card" id="item-card-{{item.id}}" *ngFor="let item of items$ | async">
+  <mat-card class="item-card" id="item-card-{{item.id}}" *ngFor="let item of filteredItems$ | async">
     <mat-card-header>
       <mat-card-title>{{item.name}}</mat-card-title>
     </mat-card-header>
