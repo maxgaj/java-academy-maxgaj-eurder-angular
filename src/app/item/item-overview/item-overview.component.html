@@ -1,6 +1,20 @@
-<p>item-overview works!</p>
-<ul>
-  <li *ngFor="let item of items">
-    <span>{{item.name}}</span>
-  </li>
-</ul>
+<h2 class="mat-h2">Items</h2>
+<mat-divider></mat-divider>
+<div class="item-card-wrapper">
+  <mat-card class="item-card" id="item-card-{{item.id}}" *ngFor="let item of items$ | async">
+    <mat-card-header>
+      <mat-card-title>{{item.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://picsum.photos/200/150" alt="Item Image">
+    <mat-card-content class="item-card-content">
+      <span>
+        <fa-icon [icon]="faEuroSign" class="primary"></fa-icon>
+        {{item.price}}
+      </span>
+      <span>
+      {{printStockUrgency(item.stockUrgency)}}
+        <fa-icon [icon]="faCircle" class="urgency-{{printStockUrgency(item.stockUrgency)}}"></fa-icon>
+    </span>
+    </mat-card-content>
+  </mat-card>
+</div>

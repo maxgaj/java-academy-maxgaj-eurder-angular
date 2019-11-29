@@ -1,8 +1,22 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Item} from './item';
 import {catchError, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+
+export enum StockUrgency {
+  LOW = 'STOCK_LOW',
+  MEDIUM = 'STOCK_MEDIUM',
+  HIGH = 'STOCK_HIGH'
+}
+
+export interface Item {
+  amountOfStock: number;
+  description: string;
+  id: string;
+  name: string;
+  price: number;
+  stockUrgency: StockUrgency;
+}
 
 @Injectable({
   providedIn: 'root'

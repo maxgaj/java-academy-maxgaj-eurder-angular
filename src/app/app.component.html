@@ -1,4 +1,15 @@
-<nav>
-  <a routerLink="/item">Items</a>
-</nav>
-<router-outlet></router-outlet>
+<mat-toolbar class="toolbar" color="accent">
+  <img alt="Order logo" src="assets/img/order.png">
+  <nav>
+    <a routerLink="/item" mat-raised-button color="primary" routerLinkActive="active">Items</a>
+    <a mat-raised-button>Other</a>
+  </nav>
+</mat-toolbar>
+
+<div id="content-wrapper">
+  <router-outlet></router-outlet>
+</div>
+
+<footer>
+  <img alt="Order logo" src="assets/img/order.png">
+</footer>

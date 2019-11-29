@@ -1,0 +1,43 @@
+@import '~@angular/material/theming';
+
+.item-card-wrapper{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+
+  .item-card {
+    width:250px;
+    margin: 16px;
+    @include mat-elevation-transition;
+    @include mat-elevation(2);
+
+    &:hover{
+      @include mat-elevation(8);
+    }
+
+    mat-card-header {
+      height: 65px;
+    }
+
+    .item-card-content{
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+
+      .urgency-low {
+        color: red;
+      }
+      .urgency-medium {
+        color: orange;
+      }
+      .urgency-high {
+        color: green;
+      }
+
+    }
+  }
+}
+
+
