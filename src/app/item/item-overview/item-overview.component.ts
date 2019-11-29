@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Item, ItemService} from '../../core/item.service';
-import {faCircle, faEuroSign, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faCircle, faEuroSign, faSearch, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {combineLatest, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
@@ -15,9 +15,11 @@ import {map, startWith} from 'rxjs/operators';
 export class ItemOverviewComponent implements OnInit {
   filteredItems$: Observable<Item[]>;
   filteringInput: FormControl = new FormControl('');
+
   faCircle = faCircle;
   faEuroSign = faEuroSign;
   faSearch = faSearch;
+  faPlus = faPlus;
 
   constructor(private itemService: ItemService) {
   }

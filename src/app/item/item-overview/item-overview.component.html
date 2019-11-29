@@ -1,10 +1,13 @@
 <div class="page-title">
   <h2 class="mat-h2 accent">Items</h2>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="standard">
     <mat-label>Filter by name</mat-label>
     <input matInput type="text" [formControl]="filteringInput" id="item-filter-input">
     <fa-icon [icon]="faSearch" matSuffix class="primary"></fa-icon>
   </mat-form-field>
+  <a class="fab" routerLink="/item/new" mat-fab color="primary" routerLinkActive="active">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </a>
 </div>
 
 <mat-divider></mat-divider>

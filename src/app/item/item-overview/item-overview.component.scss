@@ -1,26 +1,45 @@
 @import '~@angular/material/theming';
 
 .page-title {
+  height: 85px;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
+
+  h2 {
+    margin: 0;
+  }
+
+  .fab {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    z-index: 2;
+    @include mat-elevation-transition;
+    @include mat-elevation(4);
+
+    &:hover {
+      @include mat-elevation(10);
+    }
+  }
 }
 
-.item-card-wrapper{
-  display:flex;
+.item-card-wrapper {
+  margin-top: 16px;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
 
   .item-card {
-    width:250px;
+    width: 250px;
     margin: 16px;
     @include mat-elevation-transition;
     @include mat-elevation(2);
 
-    &:hover{
+    &:hover {
       @include mat-elevation(8);
     }
 
@@ -28,7 +47,7 @@
       height: 65px;
     }
 
-    .item-card-content{
+    .item-card-content {
       display: flex;
       flex-flow: row;
       justify-content: space-between;
@@ -36,9 +55,11 @@
       .urgency-low {
         color: red;
       }
+
       .urgency-medium {
         color: orange;
       }
+
       .urgency-high {
         color: green;
       }
