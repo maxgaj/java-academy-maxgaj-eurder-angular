@@ -37,7 +37,7 @@ export class ItemOverviewComponent implements OnInit {
   }
 
   private getFilteredItems(): Observable<Item[]> {
-    const items$ = this.itemService.getHeroes();
+    const items$ = this.itemService.getItems();
     const filteringInput$ = this.filteringInput.valueChanges.pipe(startWith(''));
     return combineLatest(items$, filteringInput$).pipe(
       map(([items, filterString]) => items.filter(

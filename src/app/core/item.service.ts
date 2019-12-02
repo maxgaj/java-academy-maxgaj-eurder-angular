@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 export enum StockUrgency {
   LOW = 'STOCK_LOW',
@@ -23,12 +23,16 @@ export interface Item {
 })
 export class ItemService {
   private itemUrl = 'http://localhost:9000/items';
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
-  getHeroes(): Observable<Item[]> {
+  getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.itemUrl)
       .pipe(
         tap(_ => this.log('fetched items')),
@@ -36,8 +40,15 @@ export class ItemService {
       );
   }
 
+  addItem(item: Item): Observable<Item> {
+    return this.http.post<Item>(this.itemUrl, item, this.httpOptions)
+      .pipe(
+        tap((newItem: Item) => this.log(`added item w/ id=${newItem.id}`))
+      );
+  }
 
-  private log(message: string) {
+
+  log(message: string): void {
     console.log(`HeroService: ${message}`);
   }
 
