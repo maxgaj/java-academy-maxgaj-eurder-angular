@@ -10,16 +10,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./item-create.component.scss']
 })
 export class ItemCreateComponent implements OnInit {
-
-  itemForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    description: new FormControl('', [Validators.maxLength(255)]),
-    price: new FormControl('', Validators.min(0)),
-    amountOfStock: new FormControl('', Validators.min(0))
-  });
-
-  faEuroSign = faEuroSign;
-  faSpinner = faSpinner;
+  item: Item = {
+    name: '',
+    description: '',
+    price: null,
+    amountOfStock: null,
+    id: null,
+    stockUrgency: null
+  };
   isSaving = false;
   failedSaving = false;
 
@@ -32,13 +30,10 @@ export class ItemCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    if (!this.itemForm.valid) {
-      return;
-    }
+  onSubmit(itemToSave: Item) {
     this.isSaving = true;
     this.failedSaving = false;
-    this.itemService.addItem(this.itemForm.value)
+    this.itemService.addItem(itemToSave)
       .subscribe(
         (item: Item) => this.onSubmitSuccess(item),
         (error) => this.onSubmitFailed(error));
