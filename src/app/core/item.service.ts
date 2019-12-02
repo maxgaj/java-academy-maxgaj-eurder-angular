@@ -40,6 +40,14 @@ export class ItemService {
       );
   }
 
+  getItem(id: string): Observable<Item> {
+    const url = `${this.itemUrl}/${id}`;
+    return this.http.get<Item>(url).pipe(
+      tap(_ => this.log(`fetched item with id=${id}`)),
+      catchError(this.handleError<Item>(`getHero id=${id}`))
+    );
+  }
+
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(this.itemUrl, item, this.httpOptions)
       .pipe(
@@ -47,10 +55,10 @@ export class ItemService {
       );
   }
 
-
   log(message: string): void {
     console.log(`HeroService: ${message}`);
   }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -58,6 +66,4 @@ export class ItemService {
       return of(result as T);
     };
   }
-
-
 }

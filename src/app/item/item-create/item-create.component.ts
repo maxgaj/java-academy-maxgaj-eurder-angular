@@ -47,7 +47,7 @@ export class ItemCreateComponent implements OnInit {
   private onSubmitSuccess(item: Item) {
     this.isSaving = false;
     this.failedSaving = false;
-    this.router.navigate(['/item', item.id]);
+    this.router.navigate(['/item/detail', item.id]);
   }
 
   private onSubmitFailed(error: any) {

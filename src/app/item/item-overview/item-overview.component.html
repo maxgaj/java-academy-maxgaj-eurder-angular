@@ -13,7 +13,11 @@
 <mat-divider></mat-divider>
 
 <div class="item-card-wrapper">
-  <mat-card class="item-card" id="item-card-{{item.id}}" *ngFor="let item of filteredItems$ | async">
+  <mat-card
+    class="item-card"
+    id="item-card-{{item.id}}"
+    *ngFor="let item of filteredItems$ | async"
+    routerLink="/item/detail/{{item.id}}">
     <mat-card-header>
       <mat-card-title>{{item.name}}</mat-card-title>
     </mat-card-header>

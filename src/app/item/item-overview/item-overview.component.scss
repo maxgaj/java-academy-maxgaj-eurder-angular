@@ -36,6 +36,7 @@
   .item-card {
     width: 250px;
     margin: 16px;
+    cursor: pointer;
     @include mat-elevation-transition;
     @include mat-elevation(2);
 
