@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+.page-title {
+  height: 85px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+
+    span {
+      color: #777777;
+    }
+  }
+}

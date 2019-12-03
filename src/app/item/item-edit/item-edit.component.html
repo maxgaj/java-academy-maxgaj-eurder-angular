@@ -1,13 +1,13 @@
 <div class="page-title">
-  <h2 class="mat-h2 accent">Create Item</h2>
+  <h2 class="mat-h2 accent">Edit Item <span *ngIf="item">{{item.id}}</span></h2>
 </div>
 
 <mat-divider></mat-divider>
 
 <app-item-form
+  *ngIf="item"
+  [item]="item"
   [isSaving]="isSaving"
   [failedSaving]="failedSaving"
   (itemEmitter)="onSubmit($event)">
 </app-item-form>
-
-

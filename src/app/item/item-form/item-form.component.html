@@ -3,13 +3,13 @@
 
     <mat-form-field appearance="standard">
       <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name" required>
+      <input data-cy="name-input" matInput type="text" formControlName="name" required>
       <mat-error>This field cannot be empty</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="standard" hintLabel="Max. 255 characters">
       <mat-label>Description</mat-label>
-      <textarea matInput #descriptionTextArea formControlName="description" rows="4" maxlength="255" required></textarea>
+      <textarea data-cy="description-textarea" matInput #descriptionTextArea formControlName="description" rows="4" maxlength="255" required></textarea>
       <mat-hint align="end">{{255 - (descriptionTextArea.value?.length || 0)}}
         character{{descriptionTextArea.value?.length >= 254 ? '' : 's'}} left
       </mat-hint>
@@ -19,7 +19,7 @@
     <div class="form-row">
       <mat-form-field appearance="standard">
         <mat-label>Price</mat-label>
-        <input matInput type="number" step="0.01" formControlName="price">
+        <input data-cy="price-input" matInput type="number" step="0.01" formControlName="price">
         <span matPrefix>
           <fa-icon [icon]="faEuroSign" class="primary"></fa-icon>
           &nbsp;
@@ -29,17 +29,17 @@
 
       <mat-form-field appearance="standard">
         <mat-label>Amount Of Stock</mat-label>
-        <input matInput type="number" step="1" formControlName="amountOfStock">
+        <input data-cy="amountOfStock-input" matInput type="number" step="1" formControlName="amountOfStock">
         <mat-error>Only positive number are allowed.</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form-buttons">
-      <button class="form-buttons-submit" mat-raised-button color="primary" type="submit" [disabled]="!itemForm.valid">
+      <button data-cy="submit-button" class="form-buttons-submit" mat-raised-button color="primary" type="submit" [disabled]="!itemForm.valid">
         Submit&nbsp;
         <fa-icon *ngIf="isSaving" [icon]="faSpinner" [spin]="true"></fa-icon>
       </button>
-      <a routerLink="/item" mat-raised-button>Cancel</a>
+      <a data-cy="cancel-button" routerLink="/item" mat-raised-button>Cancel</a>
     </div>
     <p *ngIf="failedSaving">Something went wrong...</p>
 

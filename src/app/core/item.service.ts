@@ -22,7 +22,7 @@ export interface Item {
   providedIn: 'root'
 })
 export class ItemService {
-  private itemUrl = 'http://localhost:9000/items';
+  private itemUrl = '/items';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -55,10 +55,17 @@ export class ItemService {
       );
   }
 
+  updateItem(item: Item, id: string) {
+    const url = `${this.itemUrl}/${id}`;
+    return this.http.put<Item>(url, item, this.httpOptions).pipe(
+      tap((updatedItem: Item) => this.log(`updated item with id=${updatedItem.id}`)),
+    );
+  }
+
+
   log(message: string): void {
     console.log(`HeroService: ${message}`);
   }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

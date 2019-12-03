@@ -4,7 +4,7 @@ import {Item, ItemService} from '../../core/item.service';
 import {faCircle, faEuroSign, faSearch, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {combineLatest, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, tap} from 'rxjs/operators';
 
 
 @Component({

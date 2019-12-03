@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {httpInterceptorProviders} from './http-interceptors';
 
 
 @NgModule({
@@ -23,6 +24,9 @@ import {HttpClientModule} from '@angular/common/http';
     RouterModule,
     HttpClientModule,
     CommonModule
+  ],
+  providers: [
+    httpInterceptorProviders
   ]
 })
 export class CoreModule {

@@ -1,29 +1,38 @@
 import {Component, OnInit} from '@angular/core';
 import {Item, ItemService} from '../../core/item.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-item-create',
-  templateUrl: './item-create.component.html',
-  styleUrls: ['./item-create.component.scss']
+  selector: 'app-item-edit',
+  templateUrl: './item-edit.component.html',
+  styleUrls: ['./item-edit.component.scss']
 })
-export class ItemCreateComponent implements OnInit {
+export class ItemEditComponent implements OnInit {
+  item: Item;
   isSaving = false;
   failedSaving = false;
 
   constructor(
     private itemService: ItemService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
+    this.getitem();
   }
 
-  onSubmit(itemToSave: Item) {
+  private getitem(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.itemService.getItem(id).subscribe(item => this.item = item);
+  }
+
+  onSubmit(itemToUpdate: Item) {
     this.isSaving = true;
     this.failedSaving = false;
-    this.itemService.addItem(itemToSave)
+    this.itemService.updateItem(itemToUpdate, this.item.id)
       .subscribe(
         (item: Item) => this.onSubmitSuccess(item),
         (error) => this.onSubmitFailed(error));

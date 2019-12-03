@@ -4,23 +4,23 @@
 
 <mat-divider></mat-divider>
 
-<mat-card class="item-form-card">
+<mat-card class="item-form-card" *ngIf="item; else loading">
   <form [formGroup]="itemForm">
 
     <mat-form-field appearance="standard">
       <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name" required>
+      <input data-cy="name-input" matInput type="text" formControlName="name" required>
     </mat-form-field>
 
     <mat-form-field appearance="standard">
       <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description" rows="4" maxlength="255"></textarea>
+      <textarea data-cy="description-textarea" matInput formControlName="description" rows="4" maxlength="255"></textarea>
     </mat-form-field>
 
     <div class="form-row">
       <mat-form-field appearance="standard">
         <mat-label>Price</mat-label>
-        <input matInput type="number" step="0.01" formControlName="price">
+        <input data-cy="price-input" matInput type="number" step="0.01" formControlName="price">
         <span matPrefix>
           <fa-icon [icon]="faEuroSign" class="primary"></fa-icon>
           &nbsp;
@@ -29,12 +29,12 @@
 
       <mat-form-field appearance="standard">
         <mat-label>Amount Of Stock</mat-label>
-        <input matInput type="number" step="1" formControlName="amountOfStock">
+        <input data-cy="amountOfStock-input" matInput type="number" step="1" formControlName="amountOfStock">
       </mat-form-field>
     </div>
 
     <div class="form-buttons">
-      <a mat-raised-button color="primary">Edit</a>
+      <a routerLink="/item/edit/{{item.id}}" mat-raised-button color="primary">Edit</a>
       <a routerLink="/item" mat-raised-button>Back</a>
     </div>
 
@@ -42,5 +42,9 @@
 
   </form>
 </mat-card>
+
+<ng-template #loading>
+  <p>loading</p>
+</ng-template>
 
 

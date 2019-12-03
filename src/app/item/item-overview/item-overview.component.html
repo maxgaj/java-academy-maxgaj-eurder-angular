@@ -2,21 +2,21 @@
   <h2 class="mat-h2 accent">Items</h2>
   <mat-form-field appearance="standard">
     <mat-label>Filter by name</mat-label>
-    <input matInput type="text" [formControl]="filteringInput" id="item-filter-input">
+    <input matInput type="text" [formControl]="filteringInput" data-cy="filter">
     <fa-icon [icon]="faSearch" matSuffix class="primary"></fa-icon>
   </mat-form-field>
-  <a class="fab" routerLink="/item/new" mat-fab color="primary" routerLinkActive="active">
+  <a class="fab" data-cy="add-button" routerLink="/item/new" mat-fab color="primary" routerLinkActive="active">
     <fa-icon [icon]="faPlus"></fa-icon>
   </a>
 </div>
 
 <mat-divider></mat-divider>
 
-<div class="item-card-wrapper">
+<div class="item-card-wrapper" data-cy="cards" *ngIf="filteredItems$ | async as filteredItem; else loading">
   <mat-card
     class="item-card"
     id="item-card-{{item.id}}"
-    *ngFor="let item of filteredItems$ | async"
+    *ngFor="let item of filteredItem"
     routerLink="/item/detail/{{item.id}}">
     <mat-card-header>
       <mat-card-title>{{item.name}}</mat-card-title>
@@ -34,3 +34,7 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<ng-template #loading>
+  <app-loading-component></app-loading-component>
+</ng-template>
